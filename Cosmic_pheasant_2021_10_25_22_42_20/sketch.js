@@ -1,60 +1,69 @@
-let toy; 
+let jasperToy;
+let daisyToy; 
+let x, y, c; 
+
 
 function setup() {
   createCanvas(800, 800);
-  toy = new Toy(); 
-
+  jasperToy = new Toy (200, 100, color(255, 0, 0)); 
+  daisyToy = new Toy (200, 400, color(0, 255, 0)); 
 }
 
 function draw() {
   background(220);
-  toy.display(); 
-
+  jasperToy.display(); 
+  daisyToy.display(); 
 }
 
 
-//class for toy 
-class Toy {
-  constructor(){
-    this.x = 50; 
-    this.y = 50; 
-    this.c = color(255);
-  }
 
+class Toy { 
+  
+  constructor(x, y, c){
+    //this.x = width/4; 
+    //this.y = height/4; 
+    this.x = x; 
+    this.y = y; 
+    this.c = c; 
+  }
+  
   display(){
     stroke(0); 
     strokeWeight(2); 
-
+    
     //body 
-    fill(255); 
+    
+     fill(255); 
     beginShape(); 
-    vertex(225,190); 
-    vertex(190, 280); 
-    vertex(190, 300); 
-    vertex(250, 300); 
+    vertex(this.x + 25,this.y - 10); 
+    vertex(this.x - 10, this.y + 80); 
+    vertex(this.x - 10, this.y + 100); 
+    vertex(this.x + 50, this.y + 100); 
     endShape(CLOSE); 
-
-    //head 
-    fill(255); //change color
-    ellipse(190, 152, 30, 50); //ear behind  
-    bezier(212, 152, -26, 237, 153, 354, 213, 255); 
+    
+    //head
+    fill(255); 
+    ellipse(this.x - 10, this.y - 48, 30, 50); //ear behind 
+    bezier(this.x + 12, this.y - 48, 174 - this.x, this.y + 37, this.x - 47, this.y + 154, this.x + 13, this.y + 55); 
     //line(212, 152, 215, 253); 
-    bezier(212, 152, 240, 180, 220, 250, 213, 255 )
+    bezier(this.x + 12, this.y - 48, this.x + 40, this.y - 20, this.x + 20, this.y + 50, this.x + 13, this.y + 55 ); 
     ellipseMode(CENTER); 
-    ellipse(215, 152, 30, 50); //ear in front
+    ellipse(this.x + 15, this.y - 48, 30, 50); //ear in front
     strokeWeight(7); 
-    stroke(0);
-    bezier(125, 200, 180, 250, 185, 270, 190, 280); //horse strap
+    stroke(this.c); //want to change color 
+    bezier(this.x - 75, this.y, this.x - 20, this.y + 50, this.x - 15, this.y + 70, this.x - 10, this.y + 80); //strap
     strokeWeight(2); 
-    stroke(0); 
+    stroke(0);  
     ellipseMode(CENTER); 
-    ellipse(190, 200, 10, 10); //eye
-    ellipse(120, 250, 10, 20); //nose
+    ellipse(this.x - 10, this.y, 10, 10); //eye
+    ellipse(this.x - 80, this.y + 50, 10, 20); //nose
+    
+  //stick 
+    //(200, 300, 200, 600, 230, 600, 230, 300); 
+    rect(this.x + 15, this.y + 100, 20, 100); 
+    
+  }// closer to display 
+  
 
-    //stick 
-    rect(215, 300, 20, 100); 
 
-
-  }
-
-}
+} //closer to class
