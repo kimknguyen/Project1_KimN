@@ -1,19 +1,30 @@
 let jasperToy;
 let daisyToy; 
-let x, y, c; 
+
+let x, y; 
 
 
 function setup() {
   createCanvas(800, 800);
+  background(220);
   jasperToy = new Toy (200, 100, color(255, 0, 0)); 
   daisyToy = new Toy (200, 400, color(0, 255, 0)); 
 }
 
 function draw() {
-  background(220);
+  //background(220);
   jasperToy.display(); 
-  daisyToy.display(); 
+  daisyToy.display();  
+  jasperToy.magic(); 
 }
+
+
+
+  
+
+
+
+    
 
 
 
@@ -60,9 +71,49 @@ class Toy {
     
   //stick 
     //(200, 300, 200, 600, 230, 600, 230, 300); 
+    fill(this.c); 
     rect(this.x + 15, this.y + 100, 20, 100); 
     
   }// closer to display 
+  
+  
+  magic(){ 
+    
+    function star(x, y){
+      stroke(0);
+      strokeWeight(2);
+      fill(0, 0, 255);
+      scale(0.5); 
+      beginShape(); //star 
+        vertex(x, x + 20);
+        vertex(x - 10, x + 50);
+        vertex(x - 50, x + 50);
+        vertex(x - 20, x + 75); 
+        vertex(x - 30, x + 110);
+        vertex(x, x + 85);
+        vertex(x + 30, x + 110); 
+        vertex(x + 20, x + 75);
+        vertex(x + 50, x + 50); 
+        vertex(x + 15, x + 50);
+        endShape(CLOSE);
+} 
+    var num = 100;
+    
+    if(mouseIsPressed){
+      push();
+      translate(mouseX, mouseY);
+      if (mouseX < 300){
+        star(100, 200, num, num);
+        star(350, 200, num, num); 
+        star(300, 250, num, num);
+      }
+      pop(); 
+      
+      
+    }
+
+    
+  }
   
 
 
