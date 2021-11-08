@@ -9,11 +9,12 @@ let x, y;
 
 function setup() {
   createCanvas(800, 800);
-  background(220);
-  jasperToy = new Toy (200, 100, color(255, 0, 0)); 
-  daisyToy = new Toy (200, 400, color(0, 255, 0)); 
-  jasperHorse = new Horse (200, 100, color(255, 0, 0));
-  daisyHorse = new Horse (200, 400, color(0, 255, 0)); 
+  background(238, 232, 222); 
+  background1(); 
+  jasperToy = new Toy (200, 200, color(185, 89, 219)); 
+  daisyToy = new Toy (200, 500, color(230, 106, 221)); 
+  jasperHorse = new Horse (200, 100, color(185, 89, 219));
+  daisyHorse = new Horse (200, 400, color(230, 106, 221)); 
 }
 
 function draw() {
@@ -27,6 +28,7 @@ function draw() {
 } 
 
 function scene1(){ 
+  //background1(); 
   jasperToy.display();
   daisyToy.display(); 
   magic(); 
@@ -64,6 +66,7 @@ function scene1(){
         vertex(x + 50, x + 50); 
         vertex(x + 15, x + 50);
         endShape(CLOSE);
+      
 } 
     
     
@@ -85,6 +88,7 @@ function scene1(){
     }
     
     
+    
   }
 
 function scene2(){
@@ -100,6 +104,119 @@ function scene2(){
     
   }
 }
+
+
+
+
+function background1(){
+  
+  stroke(0); 
+  strokeWeight(2); 
+  fill(179, 120, 63); 
+  rect(50, 100, 250, 650); 
+  
+  beginShape(); //chest 
+  vertex(300, 100); 
+  vertex(370, 50); 
+  vertex(370, 700); 
+  vertex(300, 750); 
+  endShape(CLOSE); 
+  
+  
+  fill(177, 87, 0); 
+  beginShape(); //chest lid 
+  vertex(370, 50);
+  vertex(390, 50);
+  vertex(390, 700);
+  vertex(370, 700);
+  endShape(CLOSE);
+  beginShape();
+  vertex(370, 700); 
+  vertex(390, 700);
+  vertex(320, 750); 
+  vertex(300, 750); 
+  endShape(CLOSE); 
+  
+  //rug 
+  noStroke(); 
+  fill(224, 56, 44); //red
+  beginShape(); 
+  vertex(0, 70);
+  vertex(150, 70); 
+  vertex(150, 100);
+  vertex(50, 100);
+  vertex(50, 200);
+  vertex(0, 200); 
+  endShape(CLOSE); 
+  
+  fill(8, 205, 240); //blue
+  beginShape();
+  vertex(150, 70);
+  vertex(150, 100);
+  vertex(300, 100);
+  vertex(300, 70); 
+  endShape(CLOSE); 
+  
+  fill(250, 216, 72); //yellow 
+  beginShape(); 
+  vertex(300, 70);
+  vertex(340, 70);
+  vertex(300, 100); 
+  endShape(CLOSE); 
+  beginShape();
+  vertex(392, 70); 
+  vertex(450, 70);
+  vertex(450, 200);
+  vertex(392, 200); 
+  endShape(CLOSE); 
+  
+  fill(252, 149, 34); //orange 
+  rect(0, 200, 50, 150);
+  
+  fill(74, 216, 110); //green 
+  rect(392, 200, 58, 150); 
+  
+  fill(250, 216, 72);
+  rect(0, 350, 50, 150); 
+  
+  fill(8, 205, 240); 
+  rect(392, 350, 58, 150);
+  
+  fill(74, 216, 110); 
+  rect(0, 500, 50, 150); 
+  
+  fill(224, 56, 44); 
+  rect(392, 500, 58, 150); 
+  
+  fill(8, 205, 240); 
+  beginShape();
+  vertex(0, 650);
+  vertex(50, 650); 
+  vertex(50, 750);
+  vertex(150, 750);
+  vertex(150, 800); 
+  vertex(0, 800); 
+  endShape(CLOSE); 
+  
+  fill(250, 216, 72); 
+  rect(150, 750, 150, 50); 
+  
+  fill(252, 149, 34); 
+  beginShape();
+  vertex(392, 650); 
+  vertex(450, 650);
+  vertex(450, 800); 
+  vertex(300, 800); 
+  vertex(300, 750);
+  vertex(320, 750);
+  vertex(390, 700); 
+  endShape(CLOSE); 
+  
+}
+
+
+
+
 
 
 
@@ -398,10 +515,7 @@ class Horse {
     vertex(this.x + 40, this.y + 220); 
     endShape(CLOSE); 
     
-    
-  } //closer to move 2 
-  
-  
- 
+    } //close to move 
 
-} //closer to class
+
+  } //closer to class 
