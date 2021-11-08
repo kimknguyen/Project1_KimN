@@ -13,8 +13,8 @@ function setup() {
   background1(); 
   jasperToy = new Toy (200, 200, color(185, 89, 219)); 
   daisyToy = new Toy (200, 500, color(230, 106, 221)); 
-  jasperHorse = new Horse (200, 100, color(185, 89, 219));
-  daisyHorse = new Horse (200, 400, color(230, 106, 221)); 
+  jasperHorse = new Horse (200, 200, color(185, 89, 219));
+  daisyHorse = new Horse (200, 500, color(230, 106, 221)); 
 }
 
 function draw() {
@@ -92,7 +92,7 @@ function scene1(){
   }
 
 function scene2(){
-  background(220); 
+  background2(); 
    if (frameCount % 10 == 0){
     frameRate(32); 
     daisyHorse.move1();
@@ -214,7 +214,22 @@ function background1(){
   
 }
 
+function background2(){
+  //background(71, 29, 219); 
+  noStroke(); 
+  fill(92, 62, 219); 
+  rect(0,0,800, 200); 
+  fill(92, 57, 219); 
+  rect(0, 200, 800, 200); 
+  fill(92, 48, 219); 
+  rect(0, 400, 800, 200); 
+  fill(92, 24, 219); 
+  rect(0, 600, 800, 200); 
+  
 
+  
+  
+} 
 
 
 
@@ -322,11 +337,55 @@ class Horse {
     vertex(this.x + 185, this.y - 60); 
     endShape(CLOSE);
     
+    stroke(0); 
+    strokeWeight(2); 
+    beginShape(); //other ear 
+    vertex(this.x + 210, this.y - 80); 
+    vertex(this.x + 230, this.y - 90); 
+    vertex(this.x + 220, this.y - 75); 
+    endShape(CLOSE);
+    
+    //horn 
+    noStroke();  
+    fill(255, 249, 69); 
+    beginShape(); 
+    vertex(this.x + 193, this. y - 70); 
+    vertex(this.x + 200, this.y - 105); 
+    vertex(this.x + 220, this.y - 72 ); 
+    vertex(this.x + 200, this.y - 77); 
+    endShape(CLOSE); 
+    
+    //tail 
+    stroke(this.c); 
+    strokeWeight(20); 
+    noFill(); 
+    bezier(this.x, this.y + 10, this.x - 50, this.y + 50, this.x + 13, this.y + 100, this.x - 60, this.y + 150); 
+    
+    //wings 
+    stroke(164, 255, 251, 150);
+    strokeWeight(4); 
+    fill(251, 248, 255); 
+    beginShape(); 
+    vertex(this.x + 140, this.y + 50); 
+    vertex(this.x + 20, this.y - 50); 
+    vertex(this.x + 25, this.y - 25); 
+    //vertex(this.x + 40, this.y - 20); 
+    vertex(this.x + 25, this.y -25); 
+    vertex(this.x + 35, this.y + 20); 
+    //vertex(this.x + 70, this.y + 30); 
+    vertex(this.x + 35, this.y + 20); 
+    vertex(this.x + 40, this. y + 50); 
+    vertex(this.x + 90, this.y + 70); 
+    endShape(CLOSE); 
+    
+    triangle(this.x + 80, this.y - 50, this.x + 80 , this.y, this.x + 120, this.y); 
+    
     
   //first two legs
   //leg 2 
   stroke(0); 
   strokeWeight(2); 
+  fill(this.c); 
   beginShape(); 
   vertex(this. x + 120, this.y + 100); 
   vertex(this.x + 165, this.y + 100); 
@@ -435,9 +494,47 @@ class Horse {
     vertex(this.x + 185, this.y - 60); 
     endShape(CLOSE);
     
+    stroke(0); 
+    strokeWeight(2); 
+    beginShape(); //other ear 
+    vertex(this.x + 210, this.y - 80); 
+    vertex(this.x + 230, this.y - 90); 
+    vertex(this.x + 220, this.y - 75); 
+    endShape(CLOSE);
+    
+     //horn 
+    noStroke();  
+    fill(255, 249, 69); 
+    beginShape(); 
+    vertex(this.x + 193, this. y - 70); 
+    vertex(this.x + 200, this.y - 105); 
+    vertex(this.x + 220, this.y - 72 ); 
+    vertex(this.x + 200, this.y - 77); 
+    endShape(CLOSE); 
+    
+     //tail 
+    stroke(this.c); 
+    strokeWeight(20); 
+    noFill(); 
+    bezier(this.x, this.y + 10, this.x - 50, this.y + 50, this.x + 13, this.y + 100, this.x - 60, this.y + 100); 
+    
+    //wings 
+    stroke(164, 255, 251, 150);
+    strokeWeight(4); 
+    fill(251, 248, 255); 
+    beginShape(); 
+    vertex(this.x + 140, this.y + 50); 
+    vertex(this.x + 20, this.y); 
+    vertex(this.x + 40, this.y + 50); 
+    vertex(this.x + 90, this.y + 70); 
+    endShape(CLOSE); 
+    
+    
+    
     //leg 2
     stroke(0);
     strokeWeight(2); 
+    fill(this.c); 
     beginShape(); //thigh
     vertex(this.x + 120, this.y + 100);
     vertex(this.x + 165, this.y + 100);
@@ -515,7 +612,10 @@ class Horse {
     vertex(this.x + 40, this.y + 220); 
     endShape(CLOSE); 
     
-    } //close to move 
+    
+  } //closer to move 2 
+  
+  
+ 
 
-
-  } //closer to class 
+} //closer to class
