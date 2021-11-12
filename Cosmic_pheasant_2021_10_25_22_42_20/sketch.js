@@ -2,6 +2,7 @@ let jasperToy;
 let daisyToy; 
 let jasperHorse; 
 let daisyHorse; 
+let night = []; 
 
 
 let x, y; 
@@ -15,14 +16,16 @@ function setup() {
   daisyToy = new Toy (200, 500, color(230, 106, 221)); 
   jasperHorse = new Horse (200, 200, color(185, 89, 219));
   daisyHorse = new Horse (200, 500, color(230, 106, 221)); 
+  for (let i = 0; i < 50; i++) {
+    night.push(new Bright());
+    } 
 }
 
 function draw() {
-  
   scene1(); 
   if (millis() > 5000) {
     scene2();
-  
+  //loop(); 
   
 }
 } 
@@ -93,6 +96,10 @@ function scene1(){
 
 function scene2(){
   background2(); 
+   for (let i = 0; i < night.length; i+= 3) {
+    night[i].display();
+    night[i].move(); 
+   } 
    if (frameCount % 10 == 0){
     frameRate(32); 
     daisyHorse.move1();
@@ -226,11 +233,51 @@ function background2(){
   fill(92, 24, 219); 
   rect(0, 600, 800, 200); 
   
-
-  
+  fill(255); 
+  ellipse(random(width), random(height), 5, 5); //this gives a stary night effect and makes the stars move randomly 
   
 } 
 
+class Bright {
+  constructor() {
+    this.x = random(width);
+    this.y = random(height);
+    this.xPos = 0; 
+    this.speed = 5;
+  }
+  
+  display(){
+      stroke(0);
+      strokeWeight(2);
+      fill(246, 247, 250);
+      //scale(); 
+      beginShape(); //star 
+        vertex(this.x, this.y + 20);
+        vertex(this.x - 10, this.y + 50);
+        vertex(this.x - 50, this.y + 50);
+        vertex(this.x - 20, this.y + 75); 
+        vertex(this.x - 30, this.y + 110);
+        vertex(this.x, this.y + 85);
+        vertex(this.x + 30, this.y + 110); 
+        vertex(this.x + 20, this.y + 75);
+        vertex(this.x + 50, this.y + 50); 
+        vertex(this.x + 15, this.y + 50);
+      endShape(CLOSE); 
+
+  }
+  
+  move(){
+  
+  this.x = this.x + this.speed;
+
+  if (this.x > width || this.x < 0) {
+    //this.speed = -3;
+    this.speed = -this.speed
+  }
+  
+} 
+
+} //closer to Bright class
 
 
 
@@ -619,3 +666,5 @@ class Horse {
  
 
 } //closer to class
+
+
