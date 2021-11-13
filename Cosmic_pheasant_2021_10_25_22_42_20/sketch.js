@@ -96,7 +96,7 @@ function scene1(){
 
 function scene2(){
   background2(); 
-   for (let i = 0; i < night.length; i+= 3) {
+   for (let i = 0; i < night.length; i+= 2) {
     night[i].display();
     night[i].move(); 
    } 
@@ -270,7 +270,7 @@ class Bright {
   
   this.x = this.x + this.speed;
 
-  if (this.x > width || this.x < 0) {
+  if (this.x > width || this.x < -400) {
     //this.speed = -3;
     this.speed = -this.speed
   }
